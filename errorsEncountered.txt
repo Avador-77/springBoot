@@ -1,0 +1,15 @@
+1. maxFileSizeExceededException: this exception was coming due to the max_allowed_packet size of the mysql database which is by default of size 16MB now even though I was setting the max file size to upload but when tomcat is trying to send the data to the mysql, internally it was having capacity to take 16mb size packet and our pdf file was greater than that so hence we were facing the issue:
+
+Resolution steps:
+
+open mysql client --> enter password --> 123456 --> paste this command --> SET GLOBAL max_allowed_packet=1073741824; 1073741824 this value is 1GB in bytes
+
+
+the value 1073741824 is an integer representing a specific size in bytes. In the context of MySQL's max_allowed_packet variable, it denotes the maximum size allowed for a single packet sent between the MySQL server and its clients.
+
+In bytes:
+
+1 KB = 1024 bytes
+1 MB = 1024 KB = 1024 * 1024 bytes
+1 GB = 1024 MB = 1024 * 1024 * 1024 bytes
+So, 1073741824 bytes equals 1 gigabyte (GB) in size.
